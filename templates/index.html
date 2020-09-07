@@ -1,0 +1,23 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+<div class="wrapper fadeInDown">
+      <div id="formContent">
+        <div class="fadeIn first">
+              <h2>Django Dashboard</h2>
+              <hr>
+        </div>
+        <div class="btn-wrapper p-3 mb-2">
+            {% for item in query_results %}
+              <a class="btn btn-success btn-lg ml-2" href="{{item.get_absolute_url}}" >{{item.name}}</a>
+            {% endfor %}
+        </div>
+      </div>
+   </div>
+{% endblock content %}
+
+{% block blockname %}
+{% include 'partials/js.html' %}
+{% endblock blockname %}
+      
+
