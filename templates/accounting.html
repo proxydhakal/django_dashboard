@@ -10,29 +10,18 @@
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
+          {% for item in query_results %}
           <li class="nav-item">
-            <a class="nav-link " href="{% url 'design' %}">
-              <span data-feather="file"></span>
-              Design
+            <a class="nav-link active" href="{{item.get_absolute_url}}">
+              {{item.name}}
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'engineering' %}">
-              <span data-feather="shopping-cart"></span>
-              Engineering
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="{% url 'accounting' %}">
-              <span data-feather="users"></span>
-              Accountant
-            </a>
-          </li>
+          {% endfor %}
         </ul>
       </div>
     </nav>
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+    <div class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Dashboard</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
@@ -46,9 +35,65 @@
           </button>
         </div>
       </div>
-
-      <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-    </main>
+      <div class="dash-wrap">
+          <div class="top">
+              <div class="graph">
+                <img src="{% static 'images/PIL Image 13.jpg' %}" alt="Girl in a jacket" class="w-25">
+                <br>
+                <img src="{% static 'images/PIL Image 14.jpg' %}" alt="Girl in a jacket" class="w-25">
+              </div>
+          </div>
+          <hr>
+          <div class="people-header"><h1>PEOPLE</h1></div>
+      
+          <div class="people mt-3 d-flex flex-row">
+            
+            <img src="{% static 'images/PIL Image 15.jpg' %}" alt="people" class="w-25">
+            <p class="ml-3">Welcome joe to the team.</p>
+          </div>
+          <img src="{% static 'images/PIL Image 16.jpg' %}" alt="people" class="mt-3 w-25"">
+      </div>
+        <hr>
+      <div class="delivery">
+          <div class="delivery-header"><h1>Delivery</h1></div>
+          
+          <p class="mt-3">Month end is now complete.</p>
+      </div>
+       <hr>
+      <div class="cost">
+          <div class="delivery-header"><h1>Cost</h1></div>
+         
+          <div class="d-flex flex-row">
+              <img src="{% static 'images/PIL Image 17.jpg' %}" alt="people" class="w-25">
+              <p class="ml-3">The Us exchange rate is up, <br> 
+              please hedge all future orders.</p>    
+          </div>
+          <p class="mt-3">Remember to add tax for future proposals going to clients.</p>
+      </div>
+       <hr>
+      <div class="quality">
+        <div class="quality-header"><h1>Quality</h1></div>
+       
+        <!-- <div class="d-flex flex-row">
+            <img src="{% static 'images/PIL Image 6.jpg' %}" alt="people" class="w-25">
+            <p class="ml-3">Bolts shipped to the customer were rusty.<br>   
+             Please inspect these at shipping</p>    
+        </div> -->
+        <p class="mt-3">All bills have been paid on time this month.</p>
+      </div>
+      <hr>
+      <!-- <div class="saftey">
+          <div class="delivery-header"><h1>Saftey</h1></div>
+          
+          <p class="mt-3">No injuries this week.</p>
+      </div> -->
+      <hr>
+      <div class="issues-actions">
+          <div class="delivery-header"><h1>Issues & Actions</h1></div>
+          
+          <p class="mt-3">Please complete the office survey by Friday next week.</p>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock content %}

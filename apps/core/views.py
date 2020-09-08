@@ -20,11 +20,27 @@ def index(request):
     return render(request, template_name='index.html', context=context)
 
 def dash_desing(request,name):
+    
     query_results = Department.objects.all();
+    df = pd.read_pickle("Input_Dataframe.pckl")
+    depart = list(df.Department.unique())
+    list_depart1 = df.loc[df['Department'] == depart[0]]
+    list_depart2 = df.loc[df['Department'] == depart[1]]
+    new_df1 = list_depart1.loc[df['Section'] == 'Bottom']
+    new_df2 = list_depart2.loc[df['Item'] == 'Jobs']
+    index1 = int(new_df1[new_df1['Section']=='Bottom'].index.values)
+    index2 = int(new_df2[new_df2['Item']=='Jobs'].index.values)
+    table1=list_depart1['Text'][index1].to_html()
+    table2=list_depart2['Text'][index2].to_html()
+    context = { 'query_results' : query_results, 'data': table1,'data1':table2}
+    if name == 'Design':
+        template_name='design.html'
+    elif name == 'Engineering':
+        template_name='engineering.html'
+    else:
+        template_name='accounting.html'
 
-    # Creating a dictionary to pass as an argument
-    context = { 'query_results' : query_results }
-    return render(request, template_name='design.html', context=context)
+    return render(request, template_name, context=context)
 
 def dash_engineering(request):
     return render(request, template_name='engineering.html', context=None)

@@ -36,24 +36,24 @@
         </div>
       </div>
       <div class="dash-wrap">
-      <div class="top">
-          <div class="graph">
-            <img src="{% static 'images/PIL Image 1.png' %}" alt="Girl in a jacket" class="w-25">
-            <br>
-            <img src="{% static 'images/PIL Image 2.png' %}" alt="Girl in a jacket" class="w-25">
+          <div class="top">
+              <div class="graph">
+                <img src="{% static 'images/PIL Image 1.png' %}" alt="Girl in a jacket" class="w-25">
+                <br>
+                <img src="{% static 'images/PIL Image 2.png' %}" alt="Girl in a jacket" class="w-25">
+              </div>
           </div>
-      </div>
-      <hr>
-      <div class="people-header"><h1>PEOPLE</h1></div>
+          <hr>
+          <div class="people-header"><h1>PEOPLE</h1></div>
       
-      <div class="people mt-3 d-flex flex-row">
-        
-        <img src="{% static 'images/PIL Image 3.jpg' %}" alt="people" class="w-25">
-        <p class="ml-3">Debbie has done a great job this week. <br> She stayed late to help out a customer.</p>
+          <div class="people mt-3 d-flex flex-row">
+            
+            <img src="{% static 'images/PIL Image 3.jpg' %}" alt="people" class="w-25">
+            <p class="ml-3">Debbie has done a great job this week. <br> She stayed late to help out a customer.</p>
+          </div>
+          <img src="{% static 'images/PIL Image 4.jpg' %}" alt="people" class="mt-3 w-25"">
       </div>
-          <img src="{% static 'images/PIL Image 4.jpg' %}" alt="people" class="w-25"">
-      </div>
-      <hr>
+        <hr>
       <div class="delivery">
           <div class="delivery-header"><h1>Delivery</h1></div>
           
@@ -93,26 +93,7 @@
           
           <p class="mt-3">Everyone please have any food removed from the kitchen fridge by Friday.</p>
           <p>Cleaning will start at 5pm Friday evening.</p>
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th scope="col">Job Number</th>
-                <th scope="col">Project Name</th>
-                <th scope="col">Estimate</th>
-                <th scope="col">Actual</th>
-                <th scope="col">Forecast</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>12345-1</td>
-                <td>River lake</td>
-                <td>100</td>
-                <td>105</td>
-                <td>110</td>
-              </tr>
-            </tbody>
-          </table>
+           {{data | safe}}
       </div>
     </div>
   </div>
