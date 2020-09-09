@@ -25,7 +25,7 @@ SECRET_KEY = 'xbn7*(g4cn^0z24ek9y2!r4t4%1!o7(mvg*0znywui_y^h_rw9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -125,4 +125,4 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     
 ]
-STATIC_ROOT = "/proxydhakal/home/static/assets"
+STATIC_ROOT = os.path.join(BASE_DIR, "static/assets")

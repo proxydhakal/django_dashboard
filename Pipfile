@@ -9,6 +9,7 @@ verify_ssl = true
 django = "==3.0"
 pillow = "*"
 pandas = "*"
+reportlab = "*"
 
 [requires]
 python_version = "3.8"

@@ -1,8 +1,10 @@
-from django.shortcuts import render
-import pandas as pd
 import json
-from apps.core.models import Department
+import pandas as pd
+from django.shortcuts import render
 from django.db import IntegrityError
+from apps.core.models import Department
+
+
 # Create your views here.
 
 def index(request):
@@ -14,12 +16,10 @@ def index(request):
         except IntegrityError:
             pass
     query_results = Department.objects.all();
-
-    # Creating a dictionary to pass as an argument
     context = { 'query_results' : query_results }
     return render(request, template_name='index.html', context=context)
 
-def dash_desing(request,name):
+def dashboardView(request,name):
     
     query_results = Department.objects.all();
     df = pd.read_pickle("Input_Dataframe.pckl")
@@ -30,8 +30,8 @@ def dash_desing(request,name):
     new_df2 = list_depart2.loc[df['Item'] == 'Jobs']
     index1 = int(new_df1[new_df1['Section']=='Bottom'].index.values)
     index2 = int(new_df2[new_df2['Item']=='Jobs'].index.values)
-    table1=list_depart1['Text'][index1].to_html()
-    table2=list_depart2['Text'][index2].to_html()
+    table1=list_depart1['Text'][index1].to_html(index=False,justify='left')
+    table2=list_depart2['Text'][index2].to_html(index=False,justify='left')
     context = { 'query_results' : query_results, 'data': table1,'data1':table2}
     if name == 'Design':
         template_name='design.html'
@@ -41,9 +41,3 @@ def dash_desing(request,name):
         template_name='accounting.html'
 
     return render(request, template_name, context=context)
-
-def dash_engineering(request):
-    return render(request, template_name='engineering.html', context=None)
-
-def dash_accounting(request):
-    return render(request, template_name='accounting.html', context=None)
